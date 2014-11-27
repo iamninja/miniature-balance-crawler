@@ -19,7 +19,7 @@ class VodafoneCrawler
 		@phoneNumber = ""
 		@balanceEuro = 0
 		@balanceCents = 0
-		@moneyBalance = "#{@balanceEuro}.#{@balanceCents}".to_f
+		@moneyBalance = 0
 		@dataBalance = -1
 		@username = USERNAME
 		@password = PASSWORD
@@ -55,7 +55,8 @@ class VodafoneCrawler
 
 			# Money balance info
 			@balanceEuro = page.at('div.firstRow2').text.strip.to_i
-			@balanceCents = page.at('div.firstRow2 span').text.strip.to_i
+			@balanceCents = page.at('div.firstRow2 span').text.strip
+			@moneyBalance = "#{@balanceEuro}.#{@balanceCents}".to_f
 
 			# Data balance info
 			balances = page.search('.table-sort td.toggler .cc-remaining')
