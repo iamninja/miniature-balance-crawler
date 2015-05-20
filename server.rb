@@ -77,7 +77,8 @@ end
 crawler = VodafoneCrawler.new
 crawler.login
 
-set :port, 8080
+set :server, 'thin'
+set :port, 7777
 set :environment, :production
 
 get '/info' do
